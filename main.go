@@ -9,4 +9,5 @@ import (
 func main() {
 	params := args.Parse()
 	fmt.Println(params.Host)
+	fmt.Println(params.Port)
 }
