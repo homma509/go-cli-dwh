@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+
+	"dwh/args"
 )
 
 func main() {
-	host, port, username, password, dbname := parseArgs()
-	fmt.Println(host, port, username, password, dbname)
+	params := args.Parse()
+	fmt.Println(params.Host)
 }
