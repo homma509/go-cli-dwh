@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"dwh/args"
+	"dwh/opts"
 )
 
 func main() {
-	params := args.Parse()
-	fmt.Println(params.Host)
-	fmt.Println(params.Port)
+	options := opts.Parse()
+	fmt.Println(options.Host)
+	fmt.Println(options.Port)
 }
