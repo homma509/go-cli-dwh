@@ -1,13 +1,14 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 
-	"dwh/opts"
+	// "dwh/opts"
+	"dwh/models"
 )
 
 func main() {
-	options := opts.Parse()
-	fmt.Println(options.Host)
-	fmt.Println(options.Port)
+	// options := opts.Parse()
+	// fmt.Println(options.Dbname)
+	models.GetColumnInfo()
 }
