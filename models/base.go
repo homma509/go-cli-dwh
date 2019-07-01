@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	_ "github.com/lib/pq"
 )
@@ -19,4 +20,5 @@ func init() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	fmt.Println("ok1!")
 }

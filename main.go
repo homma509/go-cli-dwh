@@ -2,6 +2,7 @@ package main
 
 import (
 	// "fmt"
+	"log"
 
 	// "dwh/opts"
 	"dwh/models"
@@ -10,5 +11,6 @@ import (
 func main() {
 	// options := opts.Parse()
 	// fmt.Println(options.Dbname)
-	models.GetColumnInfo()
+	tabs := models.NewTables()
+	log.Println(tabs)
 }
