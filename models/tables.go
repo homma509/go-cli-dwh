@@ -1,43 +1,15 @@
 package models
 
 import (
-	"fmt"
+	// "fmt"
 	"log"
 )
 
 type Tables []Table
 
-func (tabs *Tables) Contains(tableName string) bool {
+func (tabs *Tables) Find(tableName string) *Table {
 	for _, tab := range *tabs {
 		if tab.TableName == tableName {
-			return true
-		}
-	}
-	return false
-}
-
-func (tabs *Tables) Index(tableName string) (int, error) {
-	for i, tab := range *tabs {
-		if tab.TableName == tableName {
-			return i, nil
-		}
-	}
-	return -1, fmt.Errorf("Could not find " + tableName)
-}
-
-func (tabs *Tables) Find(tableName string) {
-	for _, tab := range *tabs {
-		if tab.TableName == tableName {
-			log.Println("見つかった")
-			return
-		}
-	}
-}
-
-func (tabs *Tables) FindTable(tableName string) *Table {
-	for _, tab := range *tabs {
-		if tab.TableName == tableName {
-			log.Println("見つかった!: "+tableName)
 			return &tab
 		}
 	}
@@ -45,9 +17,15 @@ func (tabs *Tables) FindTable(tableName string) *Table {
 }
 
 func (tabs *Tables) AddTable(tableName string) *Table {
-	i, err := tabs.Index(tableName)
-	if err == nil {
-		return &tabs[i]
+	// tab1 := *(tabs.Find(tableName))
+	// if tab1 != nil {
+	// 	return &tab1
+	// }
+
+	for _, tab := range *tabs {
+		if tab.TableName == tableName {
+			return &tab
+		}
 	}
 
 	tab := Table{TableName: tableName}
@@ -65,6 +43,8 @@ from
 order by
 	table_name
 ,	ordinal_position
+limit
+	50
 ;
 `
 	rows, err := DB.Query(cmd)
