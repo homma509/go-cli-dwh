@@ -12,5 +12,8 @@ func main() {
 	// options := opts.Parse()
 	// fmt.Println(options.Dbname)
 	tabs := models.NewTables()
-	log.Println(tabs)
+	for _, tab := range *tabs {
+		log.Println(tab.TableName)
+		log.Println(tab.Columns[0])
+	}
 }

@@ -7,21 +7,7 @@ import (
 
 type Tables []Table
 
-func (tabs *Tables) Find(tableName string) *Table {
-	for _, tab := range *tabs {
-		if tab.TableName == tableName {
-			return &tab
-		}
-	}
-	return nil
-}
-
 func (tabs *Tables) AddTable(tableName string) *Table {
-	// tab1 := *(tabs.Find(tableName))
-	// if tab1 != nil {
-	// 	return &tab1
-	// }
-
 	for _, tab := range *tabs {
 		if tab.TableName == tableName {
 			return &tab
@@ -57,8 +43,7 @@ limit
 	for rows.Next() {
 		var tableName, columnName string
 		rows.Scan(&tableName, &columnName)
-		tabs.AddTable(tableName)
-		// tabs.AddTable(tableName).AddColumn(columnName)
+		tabs.AddTable(tableName).Columns.AddColumn(columnName)
 	}
 
 	err = rows.Err()

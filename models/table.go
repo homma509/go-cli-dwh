@@ -7,19 +7,8 @@ import (
 
 type Table struct {
 	TableName string
-	// Columns   []Column
+	Columns
 }
-
-// func (tab *Table) AddColumn(columnName string) *Column {
-// 	col := *tab.FindColumn(columnName)
-// 	if &col != nil {
-// 		return &col
-// 	}
-
-// 	col = Column{ColumnName: columnName}
-// 	tab.Columns = append(tab.Columns, col)
-// 	return &col
-// }
 
 // func (tab *Table) FindColumn(columnName string) *Column {
 // 	for _, col := range tab.Columns {
