@@ -14,6 +14,6 @@ func main() {
 	tabs := models.NewTables()
 	for _, tab := range *tabs {
 		log.Println(tab.TableName)
-		log.Println(tab.Columns[0])
+		log.Println(tab.Columns)
 	}
 }

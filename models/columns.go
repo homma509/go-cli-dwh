@@ -1,9 +1,13 @@
 package models
 
+import (
+	"log"
+)
+
 type Columns []Column
 
 func (cols *Columns) AddColumn(columnName string) {
-	// func (cols *Columns) AddColumn(columnName string) *Column {
+// func (cols *Columns) AddColumn(columnName string) *Column {
 	// col := *tab.FindColumn(columnName)
 	// if &col != nil {
 	// 	return &col
@@ -16,6 +20,7 @@ func (cols *Columns) AddColumn(columnName string) {
 	// }
 
 	col := Column{ColumnName: columnName}
+	log.Println(columnName)
 	*cols = append(*cols, col)
 	// return &col
 }

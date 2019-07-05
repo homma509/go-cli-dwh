@@ -1,22 +1,31 @@
 package models
 
 import (
+	"errors"
 	// "fmt"
 	"log"
 )
 
 type Tables []Table
 
-func (tabs *Tables) AddTable(tableName string) *Table {
+func (tabs *Tables) Get(tableName string) (Table, error) {
 	for _, tab := range *tabs {
 		if tab.TableName == tableName {
-			return &tab
+			return tab, nil
 		}
 	}
+	return nil, errors.New("Not Found")
+}
 
-	tab := Table{TableName: tableName}
+func (tabs *Tables) AddTable(tableName string) {
+	tab, err := tabs.Get(tableName)
+	if err == nil {
+		return
+	}
+
+	tab = Table{TableName: tableName}
 	*tabs = append(*tabs, tab)
-	return &tab
+	return
 }
 
 func NewTables() *Tables {
@@ -43,7 +52,8 @@ limit
 	for rows.Next() {
 		var tableName, columnName string
 		rows.Scan(&tableName, &columnName)
-		tabs.AddTable(tableName).Columns.AddColumn(columnName)
+		tabs.AddTable(tableName)
+		// tabs.AddTable(tableName).Columns.AddColumn(columnName)
 	}
 
 	err = rows.Err()
